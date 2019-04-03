@@ -34,6 +34,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         setupUI()
     }
+    
+    @IBAction func addEventBtnPressed() {
+        
+        guard let location = self.locationManager.location else{
+            return
+        }
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = "something"
+        annotation.subtitle = "subtitle"
+        annotation.coordinate = location.coordinate
+        
+        self.mapView.addAnnotation(annotation)
+        
+    }
 
     private func setupUI() {
         self.eventBtn.layer.cornerRadius = 8.0

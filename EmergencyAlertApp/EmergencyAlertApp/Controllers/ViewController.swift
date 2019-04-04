@@ -9,12 +9,17 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventBtn: UIButton!
     
+    private lazy var db: Firestore = {
+        let firestoreDB = Firestore.firestore()
+        return firestoreDB
+    }()
     
     private lazy var locationManager: CLLocationManager = {
        
@@ -54,6 +59,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.addAnnotation(annotation)
         
+        saveEventToFirebase()
+        
+    }
+    
+    private func saveEventToFirebase() {
+        self.db.collection("EventActioned").addDocument(data: ["lat:" : "47.258728", "long:" : "-122.465973"]){ error in if let error = error {
+            print(error)
+        }else {
+            print("saved")
+            }
+        }
     }
 
     private func setupUI() {
@@ -61,4 +77,3 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.eventBtn.layer.masksToBounds = true
     }
 }
-

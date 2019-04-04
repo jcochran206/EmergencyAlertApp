@@ -1,2 +1,3 @@
-EmergencyAlertApp/EmergencyAlertApp/GoogleService-Info.plist
-EmergencyAlertApp/EmergencyAlertApp/Info.plist
+*.plist
+.DS_Store
+*.lock

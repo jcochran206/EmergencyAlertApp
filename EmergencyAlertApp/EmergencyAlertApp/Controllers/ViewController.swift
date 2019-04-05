@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventBtn: UIButton!
     
+    private var documentRef: DocumentReference!
+    
     private lazy var db: Firestore = {
         let firestoreDB = Firestore.firestore()
         return firestoreDB
@@ -48,28 +50,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBAction func addEventBtnPressed() {
         
+        saveEventToFirebase()
+        
+        
+    }
+    
+    private func addEventToMap(_ event: Event) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: event.lat, longitude: event.long)
+        annotation.title = "Hazard Event"
+        annotation.subtitle = event.reportedDate.formatToString()
+        self.mapView.addAnnotation(annotation)
+    }
+    
+    private func saveEventToFirebase() {
+        
         guard let location = self.locationManager.location else{
             return
         }
         
-        let annotation = MKPointAnnotation()
-        annotation.title = "something"
-        annotation.subtitle = "subtitle"
-        annotation.coordinate = location.coordinate
+        var event = Event(lat: location.coordinate.latitude, long: location.coordinate.longitude)
         
-        self.mapView.addAnnotation(annotation)
-        
-        saveEventToFirebase()
-        
-    }
-    
-    private func saveEventToFirebase() {
-        self.db.collection("EventActioned").addDocument(data: ["lat:" : "47.258728", "long:" : "-122.465973"]){ error in if let error = error {
-            print(error)
-        }else {
-            print("saved")
+        self.documentRef = self.db.collection("Alert-Hazard-Events").addDocument(data: event.toDictionary()) {
+            [weak self] error in
+            
+            if let error = error {
+                print(error)
+            } else {
+                event.documentID = self?.documentRef.documentID
+                self?.addEventToMap(event)
             }
         }
+        
     }
 
     private func setupUI() {

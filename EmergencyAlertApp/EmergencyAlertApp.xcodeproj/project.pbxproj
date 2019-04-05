@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B13F996B22568AF1002D352C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F996A22568AF1002D352C /* Event.swift */; };
+		B13F996E2256955C002D352C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13F996D2256955C002D352C /* Date.swift */; };
 		B15EE4DA2251D7F500A106F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15EE4D92251D7F500A106F7 /* AppDelegate.swift */; };
 		B15EE4DC2251D7F500A106F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15EE4DB2251D7F500A106F7 /* ViewController.swift */; };
 		B15EE4DF2251D7F500A106F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15EE4DD2251D7F500A106F7 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		2F4FBC12E9DE17BBC9A424E2 /* Pods-EmergencyAlertApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmergencyAlertApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmergencyAlertApp/Pods-EmergencyAlertApp.release.xcconfig"; sourceTree = "<group>"; };
 		7100250E381FBAE42564BC6A /* Pods-EmergencyAlertApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmergencyAlertApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmergencyAlertApp/Pods-EmergencyAlertApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B13F996A22568AF1002D352C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B13F996D2256955C002D352C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B15EE4D62251D7F500A106F7 /* EmergencyAlertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmergencyAlertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15EE4D92251D7F500A106F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B15EE4DB2251D7F500A106F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +55,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B13F996922568ABD002D352C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B13F996A22568AF1002D352C /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B13F996C22569542002D352C /* Date+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B13F996D2256955C002D352C /* Date.swift */,
+			);
+			path = "Date+Extensions";
+			sourceTree = "<group>";
+		};
 		B15EE4CD2251D7F400A106F7 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +92,8 @@
 		B15EE4D82251D7F500A106F7 /* EmergencyAlertApp */ = {
 			isa = PBXGroup;
 			children = (
+				B13F996C22569542002D352C /* Date+Extensions */,
+				B13F996922568ABD002D352C /* Model */,
 				B15EE4EB2251D93D00A106F7 /* Controllers */,
 				B15EE4D92251D7F500A106F7 /* AppDelegate.swift */,
 				B15EE4DD2251D7F500A106F7 /* Main.storyboard */,
@@ -239,7 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15EE4DC2251D7F500A106F7 /* ViewController.swift in Sources */,
+				B13F996B22568AF1002D352C /* Event.swift in Sources */,
 				B15EE4DA2251D7F500A106F7 /* AppDelegate.swift in Sources */,
+				B13F996E2256955C002D352C /* Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
